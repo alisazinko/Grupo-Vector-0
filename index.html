@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grupo Vector 0 — Metrología & Robótica</title>
+  <meta name="description" content="Grupo Vector 0, holding industrial de precisión tecnológica. Vector Cero Metrología y Vector Cero Robotics." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange:     #E8622A;
+      --orange-dim: #C04E1E;
+      --gold:       #D49028;
+      --black:      #0A0A0A;
+      --black-2:    #111111;
+      --black-3:    #1A1A1A;
+      --grey-dark:  #222222;
+      --grey-mid:   #555555;
+      --grey-light: #999999;
+      --white:      #F5F5F5;
+      --white-full: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      height: 72px;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(232,98,42,0.12);
+    }
+
+    .nav-logo {
+      height: 38px;
+      filter: brightness(1.05);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey-light);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover { color: var(--orange); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 5vw 80px;
+      overflow: hidden;
+    }
+
+    /* grid background */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(232,98,42,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232,98,42,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 40%, transparent 100%);
+    }
+
+    /* glow */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(232,98,42,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-logo {
+      width: min(420px, 72vw);
+      margin-bottom: 2.5rem;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 0 40px rgba(232,98,42,0.25));
+      animation: fadeUp 0.9s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    .hero-tag {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1.2rem;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.9s 0.1s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--white-full);
+      max-width: 780px;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.9s 0.18s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    .hero h1 span {
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--gold), var(--orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      margin-top: 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--grey-light);
+      max-width: 560px;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.9s 0.28s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    .hero-cta {
+      margin-top: 3rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.9s 0.38s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    .btn {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 2.2rem;
+      border-radius: 3px;
+      transition: all 0.25s;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white-full);
+    }
+
+    .btn-primary:hover {
+      background: var(--orange-dim);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(232,98,42,0.35);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(232,98,42,0.4);
+      color: var(--orange);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--orange);
+      background: rgba(232,98,42,0.08);
+      transform: translateY(-2px);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.4;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--grey-light);
+      animation: fadeUp 1s 0.8s both;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--orange), transparent);
+      animation: scrollDown 2s 1.5s infinite;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(232,98,42,0.3), transparent);
+    }
+
+    /* ── SECTION BASE ── */
+    section {
+      padding: 100px 5vw;
+    }
+
+    .section-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--white-full);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title strong {
+      font-weight: 700;
+    }
+
+    /* ── HISTORIA ── */
+    #historia {
+      background: var(--black-2);
+      position: relative;
+    }
+
+    .historia-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .historia-text p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(245,245,245,0.75);
+      margin-bottom: 1.2rem;
+      line-height: 1.8;
+    }
+
+    .historia-text p strong {
+      color: var(--white-full);
+      font-weight: 500;
+    }
+
+    /* timeline */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      bottom: 6px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--orange), rgba(232,98,42,0.1));
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.4rem;
+      top: 6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 12px rgba(232,98,42,0.6);
+    }
+
+    .timeline-year {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.35rem;
+    }
+
+    .timeline-item h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white-full);
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline-item p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--grey-light);
+      line-height: 1.6;
+    }
+
+    /* ── EMPRESAS ── */
+    #empresas {
+      background: var(--black);
+    }
+
+    .empresas-intro {
+      max-width: 600px;
+      margin: 0 auto 4rem;
+      text-align: center;
+    }
+
+    .empresas-intro .section-label,
+    .empresas-intro .section-title {
+      text-align: center;
+    }
+
+    .empresas-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .empresa-card {
+      position: relative;
+      background: var(--black-3);
+      padding: 4rem 3rem;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      overflow: hidden;
+      transition: background 0.3s;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .empresa-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(232,98,42,0.06) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .empresa-card:hover { background: #1E1E1E; }
+    .empresa-card:hover::before { opacity: 1; }
+
+    .empresa-card .corner-accent {
+      position: absolute;
+      top: 0; right: 0;
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(225deg, rgba(232,98,42,0.15), transparent);
+      transition: all 0.3s;
+    }
+
+    .empresa-card:hover .corner-accent {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(225deg, rgba(232,98,42,0.25), transparent);
+    }
+
+    .empresa-logo {
+      height: 70px;
+      object-fit: contain;
+      object-position: left center;
+      filter: brightness(1.1) saturate(1.1);
+    }
+
+    .empresa-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--white-full);
+      line-height: 1.2;
+    }
+
+    .empresa-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 2px;
+      background: rgba(232,98,42,0.1);
+      color: var(--orange);
+      border: 1px solid rgba(232,98,42,0.2);
+    }
+
+    .empresa-card p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(245,245,245,0.65);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .empresa-link {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: gap 0.2s;
+    }
+
+    .empresa-card:hover .empresa-link { gap: 0.85rem; }
+
+    .empresa-link svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ── VALORES ── */
+    #valores {
+      background: var(--black-2);
+    }
+
+    .valores-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .valores-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      margin-bottom: 4rem;
+      align-items: end;
+    }
+
+    .valores-desc {
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(245,245,245,0.65);
+      line-height: 1.8;
+      align-self: start;
+      padding-top: 2rem;
+    }
+
+    .valores-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .valor-item {
+      padding: 2rem 1.5rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-top: 2px solid var(--orange);
+      background: var(--black-3);
+    }
+
+    .valor-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 1.2rem;
+      opacity: 0.8;
+    }
+
+    .valor-item h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white-full);
+      margin-bottom: 0.6rem;
+    }
+
+    .valor-item p {
+      font-size: 0.875rem;
+      font-weight: 300;
+      color: var(--grey-light);
+      line-height: 1.65;
+    }
+
+    /* ── CONTACTO ── */
+    #contacto {
+      background: var(--black);
+      text-align: center;
+    }
+
+    .contacto-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .contacto-inner .section-label,
+    .contacto-inner .section-title {
+      text-align: center;
+    }
+
+    .contacto-inner p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(245,245,245,0.65);
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black-3);
+      border-top: 1px solid rgba(232,98,42,0.12);
+      padding: 3rem 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      height: 32px;
+      opacity: 0.85;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.82rem;
+      color: var(--grey-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--orange); }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--grey-mid);
+    }
+
+    /* ── KEYFRAMES ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scrollDown {
+      0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
+      50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+      51%  { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+      100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .historia-grid,
+      .empresas-grid,
+      .valores-header,
+      .valores-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      .empresa-card { padding: 2.5rem 1.8rem; }
+
+      .nav-links { display: none; }
+
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <img src="logos/logo grupo.png" alt="Grupo Vector 0" class="nav-logo" />
+    <ul class="nav-links">
+      <li><a href="#historia">Historia</a></li>
+      <li><a href="#empresas">Empresas</a></li>
+      <li><a href="#valores">Valores</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <img
+      src="logos/Vector Cero Metrology & Robotics_Logo (1).png"
+      alt="Vector Cero Metrology & Robotics"
+      class="hero-logo"
+    />
+    <p class="hero-tag">Grupo empresarial · Tecnología industrial</p>
+    <h1>Precisión e innovación<br /><span>al servicio de la industria</span></h1>
+    <p class="hero-sub">
+      Holding español especializado en metrología industrial y automatización robótica,
+      impulsando la excelencia técnica desde 2019.
+    </p>
+    <div class="hero-cta">
+      <a href="#empresas" class="btn btn-primary">Nuestras empresas</a>
+      <a href="#historia" class="btn btn-outline">Nuestra historia</a>
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- HISTORIA -->
+  <section id="historia">
+    <div class="historia-grid">
+      <div class="historia-text">
+        <p class="section-label">Nuestra historia</p>
+        <h2 class="section-title"><strong>Un proyecto</strong><br />que mide el futuro</h2>
+        <p>
+          Grupo Vector 0 nació de la convicción de que la <strong>precisión técnica</strong>
+          y la <strong>innovación tecnológica</strong> son los vectores fundamentales para
+          transformar la industria española.
+        </p>
+        <p>
+          Desde Zaragoza, Vector Cero Metrología comenzó a construir en 2019 un modelo
+          de servicio diferente: rigor técnico, trato cercano y soluciones a medida para
+          la industria de precisión.
+        </p>
+        <p>
+          En 2025, el grupo dio un salto cualitativo con el nacimiento de Vector Cero
+          Robotics en Álava, ampliando la propuesta de valor hacia la automatización y
+          la robótica industrial avanzada.
+        </p>
+        <p>
+          Hoy, ambas empresas comparten el mismo ADN: <strong>la búsqueda continua del
+          cero error</strong>, el compromiso con el cliente y la pasión por la tecnología.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">2019</div>
+          <h4>Fundación de Vector Cero Metrología</h4>
+          <p>
+            Nacimiento en Zaragoza con el objetivo de ofrecer servicios de metrología
+            industrial de alta precisión a la industria aragonesa y nacional.
+          </p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2021 – 2023</div>
+          <h4>Consolidación y crecimiento</h4>
+          <p>
+            Expansión del catálogo de servicios metrológicos y desarrollo de alianzas
+            estratégicas con fabricantes líderes del sector.
+          </p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2024</div>
+          <h4>Creación de Grupo Vector 0</h4>
+          <p>
+            Constitución del holding empresarial para dar estructura y visión unificada
+            a la creciente actividad del grupo.
+          </p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2025</div>
+          <h4>Lanzamiento de Vector Cero Robotics</h4>
+          <p>
+            Nueva sede en Álava – Vitoria-Gasteiz. El grupo entra en la automatización
+            y robótica industrial, completando su ecosistema tecnológico.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EMPRESAS -->
+  <section id="empresas">
+    <div class="empresas-intro">
+      <p class="section-label">Las empresas del grupo</p>
+      <h2 class="section-title"><strong>Dos especialidades,</strong><br />un mismo estándar</h2>
+    </div>
+
+    <div class="empresas-grid">
+
+      <!-- Metrología -->
+      <a href="https://www.vector0metrologia.com" target="_blank" rel="noopener" class="empresa-card">
+        <div class="corner-accent"></div>
+        <img
+          src="logos/logo-vector0-sin-fondo (3).png"
+          alt="Vector Cero Metrología"
+          class="empresa-logo"
+        />
+        <h3>Vector Cero<br />Metrología</h3>
+        <div class="empresa-meta">
+          <span class="tag">Desde 2019</span>
+          <span class="tag">Zaragoza</span>
+          <span class="tag">Metrología Industrial</span>
+        </div>
+        <p>
+          Servicios avanzados de metrología industrial: calibración, verificación
+          dimensional, control de calidad y asesoría técnica para la industria de
+          precisión. Soluciones adaptadas a cada proceso productivo con los equipos
+          más precisos del mercado.
+        </p>
+        <span class="empresa-link">
+          Visitar empresa
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+      <!-- Robotics -->
+      <a href="https://www.vector0robotics.com" target="_blank" rel="noopener" class="empresa-card">
+        <div class="corner-accent"></div>
+        <img
+          src="logos/Vector Cero Robotics_Logotipo (1) (3).png"
+          alt="Vector Cero Robotics"
+          class="empresa-logo"
+        />
+        <h3>Vector Cero<br />Robotics</h3>
+        <div class="empresa-meta">
+          <span class="tag">Desde 2025</span>
+          <span class="tag">Álava – Vitoria</span>
+          <span class="tag">Robótica Industrial</span>
+        </div>
+        <p>
+          Automatización y robótica industrial para la fábrica del futuro. Diseño,
+          integración y puesta en marcha de células robóticas, cobots y soluciones
+          de automatización flexible para optimizar la productividad y la seguridad
+          en planta.
+        </p>
+        <span class="empresa-link">
+          Visitar empresa
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- VALORES -->
+  <section id="valores">
+    <div class="valores-inner">
+      <div class="valores-header">
+        <div>
+          <p class="section-label">Lo que nos define</p>
+          <h2 class="section-title"><strong>Principios</strong><br />que guían cada decisión</h2>
+        </div>
+        <p class="valores-desc">
+          En Grupo Vector 0 creemos que la tecnología solo tiene valor cuando se pone
+          al servicio de las personas y de la industria real. Estos principios orientan
+          cada proyecto, cada medición y cada automatización.
+        </p>
+      </div>
+
+      <div class="valores-grid">
+        <div class="valor-item">
+          <svg class="valor-icon" viewBox="0 0 36 36" fill="none" stroke="#E8622A" stroke-width="1.5">
+            <circle cx="18" cy="18" r="14"/>
+            <path d="M18 10v8l5 3"/>
+          </svg>
+          <h4>Precisión absoluta</h4>
+          <p>El cero defecto no es un objetivo, es nuestro punto de partida. Cada medida y cada solución se diseña para eliminar el margen de error.</p>
+        </div>
+        <div class="valor-item">
+          <svg class="valor-icon" viewBox="0 0 36 36" fill="none" stroke="#E8622A" stroke-width="1.5">
+            <path d="M6 28L18 8l12 20H6z"/>
+            <path d="M18 16v6M18 24v1"/>
+          </svg>
+          <h4>Innovación continua</h4>
+          <p>Invertimos en tecnología y conocimiento para ofrecer siempre las soluciones más avanzadas del mercado a nuestros clientes.</p>
+        </div>
+        <div class="valor-item">
+          <svg class="valor-icon" viewBox="0 0 36 36" fill="none" stroke="#E8622A" stroke-width="1.5">
+            <path d="M18 4C10.3 4 4 10.3 4 18s6.3 14 14 14 14-6.3 14-14S25.7 4 18 4z"/>
+            <path d="M12 18l4 4 8-8"/>
+          </svg>
+          <h4>Compromiso con el cliente</h4>
+          <p>Escuchamos, entendemos y nos adaptamos. La solución correcta es la que resuelve el problema real de cada cliente.</p>
+        </div>
+        <div class="valor-item">
+          <svg class="valor-icon" viewBox="0 0 36 36" fill="none" stroke="#E8622A" stroke-width="1.5">
+            <rect x="4" y="12" width="28" height="18" rx="2"/>
+            <path d="M12 12V8a6 6 0 0 1 12 0v4"/>
+          </svg>
+          <h4>Integridad técnica</h4>
+          <p>Rigor, transparencia y honestidad en cada entrega. Nuestros informes y soluciones siempre reflejan la realidad sin condicionantes.</p>
+        </div>
+        <div class="valor-item">
+          <svg class="valor-icon" viewBox="0 0 36 36" fill="none" stroke="#E8622A" stroke-width="1.5">
+            <circle cx="18" cy="18" r="4"/>
+            <path d="M18 4v4M18 28v4M4 18h4M28 18h4M7.8 7.8l2.8 2.8M25.4 25.4l2.8 2.8M7.8 28.2l2.8-2.8M25.4 10.6l2.8-2.8"/>
+          </svg>
+          <h4>Equipo especializado</h4>
+          <p>Profesionales con formación técnica avanzada y pasión por la ingeniería. Nuestro capital humano es nuestra mayor ventaja competitiva.</p>
+        </div>
+        <div class="valor-item">
+          <svg class="valor-icon" viewBox="0 0 36 36" fill="none" stroke="#E8622A" stroke-width="1.5">
+            <path d="M6 18h24M18 6c-4 4-6 8-6 12s2 8 6 12M18 6c4 4 6 8 6 12s-2 8-6 12"/>
+            <circle cx="18" cy="18" r="14"/>
+          </svg>
+          <h4>Visión industrial global</h4>
+          <p>Con raíces en España y perspectiva europea, desarrollamos soluciones con estándares internacionales y aplicabilidad global.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="contacto-inner">
+      <p class="section-label">Contacto</p>
+      <h2 class="section-title"><strong>¿Hablamos?</strong></h2>
+      <p>
+        Si necesitas servicios de metrología, automatización o quieres conocer
+        más sobre el grupo, contacta directamente con la empresa que mejor
+        se adapta a tu necesidad.
+      </p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="https://www.vector0metrologia.com" target="_blank" rel="noopener" class="btn btn-primary">
+          Vector Cero Metrología
+        </a>
+        <a href="https://www.vector0robotics.com" target="_blank" rel="noopener" class="btn btn-outline">
+          Vector Cero Robotics
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <img src="logos/logo grupo.png" alt="Grupo Vector 0" class="footer-logo" />
+    <ul class="footer-links">
+      <li><a href="https://www.vector0metrologia.com" target="_blank" rel="noopener">vector0metrologia.com</a></li>
+      <li><a href="https://www.vector0robotics.com" target="_blank" rel="noopener">vector0robotics.com</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 Grupo Vector 0. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>
