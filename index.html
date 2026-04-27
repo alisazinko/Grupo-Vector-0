@@ -73,13 +73,12 @@
 
     /* ── HERO ── */
     .hero {
-      min-height: 100svh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 80px 5vw 60px;
+      padding: 96px 5vw 72px;
       background: var(--white);
       position: relative;
     }
@@ -95,9 +94,10 @@
     }
 
     .hero-logo-img {
-      width: min(580px, 85vw);
+      width: min(700px, 90vw);
       margin-bottom: 2rem;
       animation: fadeUp 0.8s 0.08s both;
+      image-rendering: -webkit-optimize-contrast;
     }
 
     .hero h1 {
@@ -810,6 +810,8 @@
     <h1>Precisión e innovación<br /><strong>al servicio de la industria</strong></h1>
     <p class="hero-sub">
       Holding español especializado en metrología industrial y automatización robótica.
+    </p>
+    <p class="hero-sub" style="margin-top:0.5rem;">
       Impulsando la excelencia técnica desde 2019.
     </p>
     <div class="hero-cta">
