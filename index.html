@@ -187,6 +187,18 @@
       text-align: center;
     }
 
+    .strip-bg {
+      background-size: cover;
+      background-position: center;
+      padding: 0;
+    }
+
+    .strip-overlay {
+      background: rgba(0,0,0,0.55);
+      padding: 5rem 5vw;
+      text-align: center;
+    }
+
     .strip-inner {
       max-width: 900px;
       margin: 0 auto;
@@ -823,21 +835,23 @@
   <!-- FULLBLEED IMAGE — Metrología -->
   <div class="fullbleed">
     <img
-      src="https://www.vector0metrologia.com/wp-content/uploads/2025/02/Vector-0-Metrologia-Servicio-Metrologia-Hero-Image@2x-1-scaled.jpg"
-      alt="Equipos de metrología de alta precisión"
+      src="imagenes/equipo celda.png"
+      alt="Equipo Vector 0 Metrología en celda de trabajo"
       loading="lazy"
     />
   </div>
 
   <!-- STRIP -->
-  <div class="strip">
-    <div class="strip-inner">
-      <p class="strip-label">Quiénes somos</p>
-      <h2>Dos empresas. <strong>Un solo estándar de excelencia.</strong></h2>
-      <p>
-        Grupo Vector 0 es el holding que une metrología industrial y robótica avanzada
-        bajo una misma visión: llevar la precisión técnica al máximo nivel en cada proyecto.
-      </p>
+  <div class="strip strip-bg" style="background-image:url('imagenes/1 Equipo en la oficina.jpg')">
+    <div class="strip-overlay">
+      <div class="strip-inner">
+        <p class="strip-label" style="color:rgba(255,255,255,0.7)">Quiénes somos</p>
+        <h2 style="color:#fff">Dos empresas. <strong>Un solo estándar de excelencia.</strong></h2>
+        <p style="color:rgba(255,255,255,0.75)">
+          Grupo Vector 0 es el holding que une metrología industrial y robótica avanzada
+          bajo una misma visión: llevar la precisión técnica al máximo nivel en cada proyecto.
+        </p>
+      </div>
     </div>
   </div>
 
@@ -867,6 +881,9 @@
         </p>
       </div>
 
+      <div class="historia-photo" style="margin-bottom:2rem;border-radius:16px;overflow:hidden;line-height:0;">
+        <img src="imagenes/equipo grupo.png" alt="Equipo Grupo Vector 0" style="width:100%;height:320px;object-fit:cover;display:block;" loading="lazy" />
+      </div>
       <div class="timeline">
         <div class="tl-item">
           <div class="tl-year">2019</div>
@@ -918,7 +935,7 @@
     <div class="empresa-panel">
       <div class="empresa-img">
         <img
-          src="https://www.vector0metrologia.com/wp-content/uploads/2025/03/Vector-0-Metrologia-Servcios-Digitalizacion-3d-Home-Banner-scaled.jpg"
+          src="imagenes/metrologia.png"
           alt="Vector 0 Metrología — Digitalización 3D"
           loading="lazy"
         />
@@ -949,14 +966,14 @@
     <div class="empresa-panel reverse">
       <div class="empresa-img">
         <img
-          src="https://vector0robotics.com/wp-content/uploads/2026/02/Vector-0-Robotics-Automatizacion-Insutrial-scaled.jpg"
+          src="imagenes/robotica.png"
           alt="Vector 0 Robotics — Automatización industrial"
           loading="lazy"
         />
       </div>
       <div class="empresa-content">
         <img
-          src="logos/Vector 0 Robotics_Logotipo (1) (3).png"
+          src="logos/logo-vector0-robotics.png"
           alt="Vector 0 Robotics"
           class="empresa-logo-img"
         />
@@ -981,7 +998,7 @@
   <!-- FULLBLEED — Robotics -->
   <div class="fullbleed">
     <img
-      src="https://vector0robotics.com/wp-content/uploads/2026/02/Vector-0-Robotics-Robotica-Movil-scaled.jpg"
+      src="imagenes/equipo celda.jpg"
       alt="Vector 0 Robotics — Robótica móvil"
       loading="lazy"
     />
@@ -1065,6 +1082,7 @@
             <li>Madrid</li>
             <li>Barcelona</li>
             <li>Valladolid</li>
+            <li>Valencia</li>
             <li>Vitoria-Gasteiz</li>
           </ul>
         </div>
