@@ -577,11 +577,105 @@
       margin-bottom: 2.5rem;
     }
 
-    .cta-buttons {
+    .cta-logo-links {
       display: flex;
-      gap: 1rem;
+      gap: 2rem;
       justify-content: center;
       flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .cta-logo-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.4rem 2.4rem;
+      border-radius: 16px;
+      border: 1.5px solid var(--grey-2);
+      background: var(--white);
+      text-decoration: none;
+      transition: all 0.2s;
+      min-width: 220px;
+    }
+
+    .cta-logo-link:hover {
+      border-color: var(--orange);
+      box-shadow: 0 8px 30px rgba(232,98,42,0.12);
+      transform: translateY(-3px);
+    }
+
+    .cta-logo-link img {
+      height: 52px;
+      object-fit: contain;
+    }
+
+    /* ── PARTNERS ── */
+    #partners {
+      background: var(--white);
+      padding: 6rem 5vw;
+      text-align: center;
+    }
+
+    .partners-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--grey-3);
+      margin-bottom: 3rem;
+    }
+
+    .partners-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      align-items: center;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .partner-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.2rem 2rem;
+      border-radius: 12px;
+      border: 1px solid var(--grey-2);
+      min-width: 140px;
+      min-height: 72px;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .partner-item:hover {
+      border-color: rgba(232,98,42,0.3);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    }
+
+    .partner-item img {
+      height: 32px;
+      object-fit: contain;
+      filter: grayscale(100%);
+      opacity: 0.6;
+      transition: all 0.2s;
+    }
+
+    .partner-item:hover img {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+
+    .partner-text {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--grey-3);
+      letter-spacing: -0.01em;
+      transition: color 0.2s;
+    }
+
+    .partner-item:hover .partner-text {
+      color: var(--black);
     }
 
     /* ── FOOTER ── */
@@ -591,19 +685,43 @@
     }
 
     .footer-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 2rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 3rem 5rem;
       padding-bottom: 3rem;
       border-bottom: 1px solid rgba(255,255,255,0.1);
+      align-items: start;
     }
 
     .footer-logo {
-      height: 52px;
-      filter: brightness(10);
-      opacity: 0.9;
+      height: 64px;
+    }
+
+    .footer-right {
+      display: flex;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-col h5 {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .footer-col ul li {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
     }
 
     .footer-nav {
@@ -647,6 +765,8 @@
     }
 
     /* ── RESPONSIVE ── */
+    .footer-col a:hover { color: rgba(255,255,255,0.9) !important; }
+
     @media (max-width: 820px) {
       .historia-inner { grid-template-columns: 1fr; gap: 3rem; }
       .empresa-panel { grid-template-columns: 1fr; min-height: auto; }
@@ -655,8 +775,9 @@
       .empresa-content { padding: 3rem 2rem; }
       .stats-inner { grid-template-columns: 1fr; gap: 0; }
       .nav-links { display: none; }
-      footer .footer-top { flex-direction: column; }
-      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-right { gap: 2rem; }
+      .cta-logo-link { min-width: 160px; }
     }
   </style>
 </head>
@@ -885,14 +1006,39 @@
         más sobre el grupo, contacta directamente con la empresa que mejor
         se adapta a tu necesidad.
       </p>
-      <div class="cta-buttons">
-        <a href="https://www.vector0metrologia.com" target="_blank" rel="noopener" class="btn btn-fill">
-          Vector 0 Metrología
+      <div class="cta-logo-links">
+        <a href="https://www.vector0metrologia.com" target="_blank" rel="noopener" class="cta-logo-link">
+          <img src="logos/logo-vector0-sin-fondo (3).png" alt="Vector 0 Metrología" />
         </a>
-        <a href="https://www.vector0robotics.com" target="_blank" rel="noopener" class="btn btn-ghost">
-          Vector 0 Robotics
+        <a href="https://www.vector0robotics.com" target="_blank" rel="noopener" class="cta-logo-link">
+          <img src="logos/Vector Cero Robotics_Logotipo (1) (3).png" alt="Vector 0 Robotics" />
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section id="partners">
+    <p class="partners-label">Partners &amp; Colaboradores</p>
+    <div class="partners-grid">
+      <a href="https://scanology.com" target="_blank" rel="noopener" class="partner-item">
+        <span class="partner-text">Scanology</span>
+      </a>
+      <a href="https://industrial.omron.es" target="_blank" rel="noopener" class="partner-item">
+        <img src="https://industrial.omron.es/images/omron-logo.svg" alt="Omron" />
+      </a>
+      <a href="https://elevendynamics.com" target="_blank" rel="noopener" class="partner-item">
+        <span class="partner-text">Eleven Dynamics</span>
+      </a>
+      <a href="https://onrobot.com" target="_blank" rel="noopener" class="partner-item">
+        <img src="https://onrobot.com/images/logo.svg" alt="OnRobot" />
+      </a>
+      <a href="https://www.3devok.com" target="_blank" rel="noopener" class="partner-item">
+        <img src="https://www.3devok.com/wp-content/uploads/2024/10/3devok-logo.png" alt="3DeVOK" />
+      </a>
+      <a href="https://visometry.com" target="_blank" rel="noopener" class="partner-item">
+        <img src="https://visometry.com/wp-content/uploads/2021/06/visometry-logo.svg" alt="Visometry" />
+      </a>
     </div>
   </section>
 
@@ -900,14 +1046,34 @@
   <footer>
     <div class="footer-top">
       <img src="logos/logo grupo.png" alt="Grupo Vector 0" class="footer-logo" />
-      <nav class="footer-nav">
-        <a href="https://www.vector0metrologia.com" target="_blank" rel="noopener">vector0metrologia.com</a>
-        <a href="https://www.vector0robotics.com" target="_blank" rel="noopener">vector0robotics.com</a>
-      </nav>
+      <div class="footer-right">
+        <div class="footer-col">
+          <h5>Empresas</h5>
+          <ul>
+            <li><a href="https://www.vector0metrologia.com" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.55);text-decoration:none;">vector0metrologia.com</a></li>
+            <li><a href="https://www.vector0robotics.com" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.55);text-decoration:none;">vector0robotics.com</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Sedes</h5>
+          <ul>
+            <li>Zaragoza</li>
+            <li>Madrid</li>
+            <li>Barcelona</li>
+            <li>Valladolid</li>
+            <li>Vitoria-Gasteiz</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contacto</h5>
+          <ul>
+            <li><a href="mailto:info@grupovector0.com" style="color:rgba(255,255,255,0.55);text-decoration:none;">info@grupovector0.com</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
     <div class="footer-bottom">
       <p class="footer-copy">© 2025 Grupo Vector 0. Todos los derechos reservados.</p>
-      <p class="footer-tagline">Zaragoza · Álava</p>
     </div>
   </footer>
 
